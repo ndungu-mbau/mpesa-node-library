@@ -41,7 +41,7 @@ class Mpesa {
    * @borrows AccountBalance as accountBalanceCall
    */
   accountBalance () {
-    return accountBalance.bind(this)(...arguments)
+    return accountBalance.call(this, ...arguments)
   }
 
   /**
@@ -49,7 +49,7 @@ class Mpesa {
    * @name b2bCall
    */
   b2b () {
-    return b2b.bind(this)(...arguments)
+    return b2b.call(this,...arguments)
   }
 
   /**
@@ -57,39 +57,39 @@ class Mpesa {
    * @borrows B2CRequest as b2c
    */
   b2c () {
-    return b2c.bind(this)(...arguments)
+    return b2c.call(this,...arguments)
   }
   
   c2bRegister () {
-    return c2bRegister.bind(this)(...arguments)
+    return c2bRegister.call(this, ...arguments)
   }
   c2bSimulate () {
     if(this.enviroment === 'production'){
       throw new Error('Cannot call C2B simulate in production.')
     }
-    return c2bSimulate.bind(this)(...arguments)
+    return c2bSimulate.call(this,...arguments)
   }
 
   lipaNaMpesaOnline () {
-    return lipaNaMpesaOnline.bind(this)(...arguments)
+    return lipaNaMpesaOnline.call(this,...arguments)
   }
 
   lipaNaMpesaQuery () {
-    return lipaNaMpesaQuery.bind(this)(...arguments)
+    return lipaNaMpesaQuery.call(this, ...arguments)
   }
 
   oAuth () {
     const { consumerKey, consumerSecret } = this.configs
-    return oAuth.bind(this)(consumerKey, consumerSecret)
+    return oAuth.call(this,consumerKey, consumerSecret)
   }
 
   reversal () {
-    return reversal.bind(this)(...arguments)
+    return reversal.call(this,...arguments)
   }
           
   transactionStatus () {
-    return transactionStatus.bind(this)(...arguments)
+    return transactionStatus.call(this,...arguments)
   }
 }
 
-module.exports = Mpesa
+module.exports = (config) => new Mpesa(config)
