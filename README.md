@@ -27,8 +27,8 @@ You need the following before getting to use this library:
 ## Getting Started
 This library is extremely modular, meaning you can create more than one Mpesa instance
 ````js
-const Mpesa = require('mpesa-node')
-const mpesaApi = new Mpesa({ consumerKey: '<your consumer key>', consumerSecret: '<your consumer secret>' })
+const configureMpesa = require('mpesa-node')
+const mpesaApi = configureMpesa({ consumerKey: '<your consumer key>', consumerSecret: '<your consumer secret>' })
 // another instance
 // const instance = new Mpesa({ consumerKey: 'test', consumerSecret: 'test', environment: 'production' })
 mpesaApi
@@ -48,7 +48,7 @@ mpesaApi
 While working with the Mpesa Class, you only need two key-value items, ie: consumerKey and consumerSecret.
 Nonetheless, prefilling some things means you dont have to re-enter them again. A complete config object looks like this
 ````js
-new Mpesa({
+configureMpesa({
     consumerKey: '<your consumer key>',
     consumerSecret: '<your consumer secret>',
     environment: 'sandbox',
@@ -65,7 +65,7 @@ Please note that this library is in active development, use in production with c
 
 Current API:
 ````js
-const mpesaApi = new Mpesa({ consumerKey: '<your consumer key>', consumerSecret: '<your consumer secret>' })
+const mpesaApi = configureMpesa({ consumerKey: '<your consumer key>', consumerSecret: '<your consumer secret>' })
 const {
   accountBalance,
   b2b,
