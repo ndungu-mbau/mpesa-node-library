@@ -1,6 +1,6 @@
 const expect = require('expect.js')
-const Mpesa = require('../.././src/m-pesa')
-const instance = new Mpesa({ consumerKey: 'test', consumerSecret: 'test' })
+const configureMpesa = require('../.././src/m-pesa')
+const instance = configureMpesa({ consumerKey: 'test', consumerSecret: 'test' })
 const {
   accountBalance,
   b2b,
@@ -33,7 +33,7 @@ describe('All Methods are Callble', function () {
 })
 
 describe('C2B', function () {
-  const productionInstance = new Mpesa({
+  const productionInstance = configureMpesa({
     consumerKey: 'test',
     consumerSecret: 'test',
     environment: 'production'
